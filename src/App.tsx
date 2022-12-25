@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Registration from "./pages/Registration";
 import Auth from "./pages/Auth";
+import Account from "./pages/Account";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
       </div>
     </>

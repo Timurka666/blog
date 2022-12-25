@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
+import { useActions } from "../store";
 import { useRegisterUserMutation } from "../store/blogApi/blog.api";
 
 export default function Registration() {
@@ -6,6 +8,8 @@ export default function Registration() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [status, setStatus] = useState('');
+    const {pushJwt, removeJwt} = useActions();
+    const navigate = useNavigate();
 
     const handleClick = async () => {
         await register({username: username, password: password});
@@ -15,7 +19,9 @@ export default function Registration() {
         // eslint-disable-next-line no-mixed-operators
         setStatus(newUser && newUser.message || '');
         if (newUser?.message === 'Регистрация прошла успешно.') {
-            localStorage.setItem('jwt', newUser && newUser.token || '');
+            pushJwt(newUser && newUser.token || '');
+            setTimeout(() => {navigate('/account')}, 2000);
+
         }
     }, [newUser && newUser.message]);
 

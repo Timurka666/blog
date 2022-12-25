@@ -6,7 +6,7 @@ export interface ILogReq {
 export interface IUser {
     username: ILogReq["username"];
     password: ILogReq["password"];
-    posts: any[];
+    posts: string[];
     _id: string;
     createdAt: Date;
     updatedAt: Date;
@@ -23,4 +23,23 @@ export interface accountData {
     user: IUser;
     token: string;
     message?: string;
+}
+
+export interface IPost {
+    username: string;
+    title: string;
+    text: string;
+    imgUrl: string;
+    views: number;
+    author: string;
+    comments: any[];
+    _id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    __v: number;
+}
+
+export interface NewPostReq {
+    title: string,
+    text: string,
 }
