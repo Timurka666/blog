@@ -7,7 +7,7 @@ import { accountData, ILogReq, IRegRes, IPost, NewPostReq, IMessage, AllPosts } 
 export const blogApi = createApi({
     reducerPath: 'blog/api',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/api/',
+        baseUrl: 'https://kursovaya-server.onrender.com/api/',
         prepareHeaders(headers, {getState}) {
             const token = (getState() as RootState).jwt.jwt;
 
