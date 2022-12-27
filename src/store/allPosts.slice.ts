@@ -19,10 +19,10 @@ export const searchPostsSlice = createSlice({
             state.allPosts = action.payload;
         },
         pushSearch: (state, action: PayloadAction<string>) => {
-            state.searchQuery = action.payload;
+            state.searchQuery = action.payload.toLowerCase();
         },
         searchPosts: (state) => {
-            state.allPosts = state.allPosts.filter(el => el.title.includes(state.searchQuery));
+            state.allPosts = state.allPosts.filter(el => el.title.toLowerCase().includes(state.searchQuery));
         }
     }
 });
