@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { RootState } from "..";
-import { accountData, ILogReq, IRegRes, IPost, NewPostReq } from "../../models/models";
+import { accountData, ILogReq, IRegRes, IPost, NewPostReq, IMessage, AllPosts } from "../../models/models";
 
 //const BASE_URL = process.env.BASE_API;
 
@@ -51,9 +51,30 @@ export const blogApi = createApi({
                     method: 'POST',
                     body: request
                 })
+            }),
+            deletePost: build.mutation<IMessage, string>({
+                query: (id) => ({
+                    url: `posts/${id}`,
+                    method: 'DELETE'
+                })
+            }),
+            getAllPosts: build.query<AllPosts, void>({
+                query: () => ({
+                    url: 'posts'
+                })
             })
         }
     }
 });
 
-export const {useRegisterUserMutation, useAuthUserMutation, useGetMeQuery, useGetMyPostsQuery, useLazyGetMyPostsQuery} = blogApi;
+export const {
+    useRegisterUserMutation,
+    useAuthUserMutation,
+    useGetMeQuery,
+    useGetMyPostsQuery,
+    useLazyGetMyPostsQuery,
+    useCreatePostMutation,
+    useDeletePostMutation,
+    useGetAllPostsQuery,
+    useLazyGetAllPostsQuery,
+} = blogApi;

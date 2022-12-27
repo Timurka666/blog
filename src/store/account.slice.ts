@@ -21,6 +21,12 @@ export const accountSlice = createSlice({
             state.id = action.payload.id;
             state.username = action.payload.username;
             state.posts = action.payload.posts;
+        },
+        addNewPost: (state, action: PayloadAction<IPost>) => {
+            state.posts.push(action.payload);
+        },
+        deletePost: (state, action: PayloadAction<string>) => {
+            state.posts.filter(el => el._id != action.payload);
         }
     }
 });

@@ -43,3 +43,13 @@ export interface NewPostReq {
     title: string,
     text: string,
 }
+
+export interface IMessage {
+    message: string;
+}
+
+export interface AllPosts {
+    posts: IPost[];
+    popularPosts?: IPost[];
+    message?: string;
+}
